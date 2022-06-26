@@ -25,9 +25,15 @@ $(document).ready(() => {
         document.getElementById("tableBody").innerHTML = '';
         users.forEach((user) => {
           user.self = user.userId === socketio.id;
-          var button = $('<input/>').attr({type: "button",id: "send",value: "SEND",onclick: "sendButtonClickListener(this)"});
-          document.getElementById("tableBody").innerHTML += 
-            `<tr><th>${user.userId}</th><th style="padding-left:30%" >${user.userName}</th></tr>`;
+          let currentUser = false;
+          if (user.self) {
+            document.getElementById("tableBody").innerHTML += 
+            `<tr><th>${user.userId}</th><th style="padding-left:30%;white-space: nowrap;" >${user.userName} ( Me )</th></tr>`;
+          } else {
+            // var button = $('<input/>').attr({type: "button",id: "send",value: "SEND",onclick: "sendButtonClickListener(this)"});
+            document.getElementById("tableBody").innerHTML += 
+                `<tr><th>${user.userId}</th><th style="padding-left:30%" >${user.userName}</th></tr>`;
+          }
         });
     });
 
@@ -50,7 +56,6 @@ $(document).ready(() => {
             to: selectedUser[0].userId
         });
         alert('Message Sent');
-    
       });
 
     // send.click((event) => {
@@ -72,7 +77,7 @@ $(document).ready(() => {
         console.log(data);
         let senderUser = this.allUsers.filter(e => data.from == e.userId);
         console.log(senderUser);
-        let m = `received message -> ${data.message} from user - ${senderUser[0].userName}`;
+        let m = `received message -> ${data.message} (from user - ${senderUser[0].userName})`;
         allMessages.append('<li> '+m+' </li>')
     });
 })
