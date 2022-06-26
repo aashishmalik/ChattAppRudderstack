@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Send Messages App</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="index.js"></script>
+    <script src="helper.js"></script>
+</head>
+
+<body>
+    <h1>Chat App</h1>
+    <table style="width:10%" id="table">
+        <tr>
+            <th>Id</th>
+            <th style="padding-left:30%"> UserName </th>
+        </tr>
+        <tbody id ="tableBody">
+
+        </tbody>
+    </table>
+
+    <ul id="list"></ul>
+
+    <ul id="allMessages"></ul>
+
+    <form id="myForm" style="padding-top:20%">
+        <input name="userName" placeholder="Enter SenderName"/>
+        <input name="message" placeholder="Enter Message"/>
+        <button>Send Message</button>
+    </form>
+              
+    
+</body>
+
+</html>
